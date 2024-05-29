@@ -22,10 +22,10 @@ app.post("api/products",async (req,res)=>{
         res.status(500).json({success : false, message:"Server Error"});
     }
 });
-app.get("/",(req,res)=>{
-    res.send('Hello CG Welcome Back!'); // Send a response to the client
+// app.get("/",(req,res)=>{
+//     res.send('Hello CG Welcome Back!'); // Send a response to the client
     
-})
+// })
 
 app.listen(5000, ()=>{
     connectDB(); // Connect to MongoDB database. Replace 'your_database_name' with your actual database name.
