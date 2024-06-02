@@ -1,8 +1,9 @@
 import express from 'express';
-
+import Product from './models/product.model.js';
+import mongoose from 'mongoose';
 const router = express.Router();
 
-app.get("/api/products", async (req,res)=>{
+router.get("/api/products", async (req,res)=>{
     try {
         const product = await Product.find({});
         res.status(200).json({success: true, data: products});
@@ -12,7 +13,7 @@ app.get("/api/products", async (req,res)=>{
     }
 });
 
-app.post("/api/products",async (req,res)=>{
+router.post("/api/products",async (req,res)=>{
     const product = req.body; // user will send this data
     if (!product.name || !product.price || !product.image ) {
         return res.status(400).json({success:false, message:`Please provide all fields Name: ${product.name}, Price: ${product.price}, Image:${product.image}`});
@@ -27,7 +28,7 @@ app.post("/api/products",async (req,res)=>{
     }
 });
 
-app.put("/api/products/:id", async (req,res)=>{
+router.put("/api/products/:id", async (req,res)=>{
     const {id} = req.params;
     const product = req.body;
 
@@ -42,7 +43,7 @@ app.put("/api/products/:id", async (req,res)=>{
     }
 });
 
-app.delete("/api/delete/:id", async (req,res)=>{
+router.delete("/api/delete/:id", async (req,res)=>{
     const {id} = req.params;
     console.log("ID : ", id);
     try {
@@ -53,7 +54,7 @@ app.delete("/api/delete/:id", async (req,res)=>{
     }
 
 });
-// app.get("/",(req,res)=>{
+// router.get("/",(req,res)=>{
 //     res.send('Hello CG Welcome Back!'); // Send a response to the client
     
 // })
