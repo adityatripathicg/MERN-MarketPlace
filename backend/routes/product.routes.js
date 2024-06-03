@@ -3,7 +3,7 @@ import Product from './models/product.model.js';
 import mongoose from 'mongoose';
 const router = express.Router();
 
-router.get("/api/products", async (req,res)=>{
+router.get("/", async (req,res)=>{
     try {
         const product = await Product.find({});
         res.status(200).json({success: true, data: products});
@@ -13,7 +13,7 @@ router.get("/api/products", async (req,res)=>{
     }
 });
 
-router.post("/api/products",async (req,res)=>{
+router.post("/",async (req,res)=>{
     const product = req.body; // user will send this data
     if (!product.name || !product.price || !product.image ) {
         return res.status(400).json({success:false, message:`Please provide all fields Name: ${product.name}, Price: ${product.price}, Image:${product.image}`});
@@ -28,7 +28,7 @@ router.post("/api/products",async (req,res)=>{
     }
 });
 
-router.put("/api/products/:id", async (req,res)=>{
+router.put("/:id", async (req,res)=>{
     const {id} = req.params;
     const product = req.body;
 
@@ -43,7 +43,7 @@ router.put("/api/products/:id", async (req,res)=>{
     }
 });
 
-router.delete("/api/delete/:id", async (req,res)=>{
+router.delete("/:id", async (req,res)=>{
     const {id} = req.params;
     console.log("ID : ", id);
     try {
