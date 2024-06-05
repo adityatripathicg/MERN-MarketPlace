@@ -13,10 +13,6 @@ router.put("/:id", updateProducts);
 router.delete("/:id", deleteProducts);
 
 
-// router.get("/",(req,res)=>{
-//     res.send('Hello CG Welcome Back!'); // Send a response to the client
-    
-// })
 
 
 export default router;
